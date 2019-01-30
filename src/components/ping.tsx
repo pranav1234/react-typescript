@@ -6,7 +6,7 @@ interface IPingProps  {
 };
 
 
-export const ping = (props:IPingProps) => (
+export const ping : React.FC<IPingProps> = (props) => (
 
     <div>
       <h1>{`is pinging:  ${props.isPinging}`}</h1>
