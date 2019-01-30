@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { pingActions } from '../features/ping';
+import { pingActions,pingSelectors } from '../features/ping';
 import { ping } from '../components';
 
 const mapStateToProps = (state: any, ownProps: any) => {
     return {
-        isPinging: state.ping.isPinging
+        isPinging: pingSelectors.getIsPing(state)
     }
 };
 export const PingConnected = connect(
