@@ -1,4 +1,7 @@
-const pingReducer = (state = { isPinging: false }, action:any) => {
+import { Ping } from './models';
+
+
+const pingReducer = (state:Ping = {isPinging:false} , action:any) => {
     switch (action.type) {
       case 'PING':
         return { isPinging: true };
