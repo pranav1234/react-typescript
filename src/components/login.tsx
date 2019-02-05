@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
-
-export const Login = (props:any) => (
+interface ILoginProps {
+    onChangeInput: (event:any) => any,
+    onLogin: (event:any) => any,
+}
+export const Login = (props: ILoginProps) => (
 
     <div className='login-form'>
         {/*
@@ -22,15 +25,17 @@ export const Login = (props:any) => (
                 <Header as='h2' color='teal' textAlign='center'>
                     Log-in to your account
     </Header>
-                <Form size='large' onSubmit={props.login}>
+                <Form size='large' onSubmit={props.onLogin}>
                     <Segment stacked={true}>
-                        <Form.Input fluid={true} icon='user' iconPosition='left' placeholder='E-mail address' />
+                        <Form.Input fluid={true} icon='user' iconPosition='left' placeholder='E-mail address' name = {'identifier'} onChange={props.onChangeInput}/>
                         <Form.Input
                             fluid={true}
                             icon='lock'
                             iconPosition='left'
                             placeholder='Password'
                             type='password'
+                            onChange={props.onChangeInput}
+                            name = {'password'}
                         />
                         <Button color='teal' fluid={true} size='large'>
                             Login

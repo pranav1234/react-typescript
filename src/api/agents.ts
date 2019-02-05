@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'https://reqres.in/api/';
+const URL = 'http://localhost:1337/';
 
 // const getToken = () => 'some-token';
 
