@@ -1,11 +1,10 @@
 import * as React from 'react';
 import './App.css';
-import { LoginConnected } from './connected';
+import { LoginConnected,HomeConnected } from './connected';
 import { authActions,selectors } from './features/authentication';
 import { connect } from 'react-redux';
 
 
-import { Home } from './components';
 
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
@@ -25,7 +24,7 @@ class App extends React.Component<Props> {
     return (
       <Router>
         {this.props.isLoggedIn?
-        <Route exact = {true} path="/" component={Home} />
+        <Route exact = {true} path="/" component={HomeConnected} />
         :
         <Route exact = {true} path="/" component={LoginConnected} />
         }
@@ -37,7 +36,6 @@ class App extends React.Component<Props> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log(state);
   return {
     isLoggedIn: selectors.getIsLogin(state)
   }

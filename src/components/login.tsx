@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react';
 
 interface ILoginProps {
-    onChangeInput: (event:any) => any,
-    onLogin: (event:any) => any,
+    onChangeInput: (event: any) => any,
+    onLogin: (event: any) => any,
 }
 export const Login = (props: ILoginProps) => (
 
@@ -27,7 +27,7 @@ export const Login = (props: ILoginProps) => (
     </Header>
                 <Form size='large' onSubmit={props.onLogin}>
                     <Segment stacked={true}>
-                        <Form.Input fluid={true} icon='user' iconPosition='left' placeholder='E-mail address' name = {'identifier'} onChange={props.onChangeInput}/>
+                        <Form.Input fluid={true} icon='user' iconPosition='left' placeholder='E-mail address' name={'identifier'} onChange={props.onChangeInput} />
                         <Form.Input
                             fluid={true}
                             icon='lock'
@@ -35,16 +35,13 @@ export const Login = (props: ILoginProps) => (
                             placeholder='Password'
                             type='password'
                             onChange={props.onChangeInput}
-                            name = {'password'}
+                            name={'password'}
                         />
                         <Button color='teal' fluid={true} size='large'>
                             Login
         </Button>
                     </Segment>
                 </Form>
-                <Message>
-                    New to us? <a href='#'>Sign Up</a>
-                </Message>
             </Grid.Column>
         </Grid>
     </div>

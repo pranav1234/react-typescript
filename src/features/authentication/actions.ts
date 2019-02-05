@@ -10,3 +10,11 @@ export const authLogin = createAsyncAction(
     'IS_LOGIN_SUCCESS',
     'IS_LOGIN_FAILURE'
   )<void, boolean, Error>();
+
+  export const authLogout = createAsyncAction(
+    'LOGOUT_REQUEST',
+    'LOGOUT_SUCCESS',
+    'LOGOUT_FAILURE'
+  )<void, any, Error>();
+
+  

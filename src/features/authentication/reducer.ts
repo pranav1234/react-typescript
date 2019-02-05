@@ -28,6 +28,8 @@ export default combineReducers<AuthenticatedState, AuthenticatedAction>({
                 return action.payload;
             case getType(actions.authLogin.success):
                 return action.payload;
+                case getType(actions.authLogout.success):
+                return action.payload;
             default:
                 return state;
         }

@@ -3,7 +3,7 @@ import { combineEpics, Epic, } from 'redux-observable';
 import { filter, switchMap, map, catchError,pluck} from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { from, of } from 'rxjs';
-import { authLogin ,isLoggedIn} from './actions';
+import { authLogin ,isLoggedIn,authLogout} from './actions';
 import { RootAction, RootState, RootService } from 'MyTypes';
 
 
@@ -28,7 +28,7 @@ export const loginUser: Epic<
             switchMap((obj:any) =>
                 from(api.login({...obj.payload})).pipe(
                     pluck('data', 'jwt'),
-                    map(value => {  				console.log('TCL: payload', obj);                    localStorage.setItem('jwt', value.toString()); return value }),
+                    map(value => {localStorage.setItem('jwt', value.toString()); return value }),
                     map(authLogin.success),
                     catchError((message: Error) => of(authLogin.failure(message)))
                 )
@@ -54,4 +54,22 @@ export const isLogin: Epic<
 
         );
 
-export default combineEpics(loginUser,isLogin);
+        export const logoutUser: Epic<
+    RootAction,
+    RootAction,
+    RootState,
+    RootService
+    > = (action$, state$, { api }) =>
+        action$.pipe(
+            filter(isActionOf(authLogout.request)),
+            switchMap(() =>
+                of(localStorage.removeItem('jwt')).pipe(
+                    map(value => false ),
+                    map(authLogout.success),
+                    catchError((message: Error) => of(authLogout.failure(message)))
+                )
+            ),
+
+        );
+
+export default combineEpics(loginUser,isLogin,logoutUser);

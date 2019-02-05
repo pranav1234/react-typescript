@@ -31,10 +31,8 @@ export class LoginConnectedComponent extends React.Component<Props, State> {
     }
 
     public onChange = (event: React.FormEvent<HTMLInputElement>) => {
-        console.log('TCL: LoginConnectedComponent -> publiconChange -> this', this.state)
 
         this.setState({ [event.currentTarget.name]: event.currentTarget.value } as Pick<State, keyof State>);
-        console.log('TCL: LoginConnectedComponent -> onChange -> event', event.currentTarget.name, event.currentTarget.value)
     }
 
     public render() {
